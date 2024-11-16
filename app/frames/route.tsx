@@ -79,122 +79,98 @@ const handleRequest = frames(async (ctx) => {
           height: '100%', 
           backgroundColor: '#1A1A1A', 
           color: '#F5F5DC', 
-          padding: '2rem',
-          gap: '1.5rem',
+          padding: '2.5rem',
+          gap: '2rem',
           justifyContent: 'center'
         }}>
-          {/* Header Section */}
-          <div style={{
+          <div style={{ 
             display: 'flex',
+            flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1rem',
-            marginBottom: '1rem'
+            gap: '1.2rem'
           }}>
-            <div style={{
-              width: '3rem',
-              height: '3rem',
-              backgroundColor: '#FFD700',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '2rem'
-            }}>
-              ⚡
-            </div>
             <div style={{ 
-              fontSize: '2.5rem', 
+              fontSize: '3rem', 
               fontWeight: 'bold',
               color: '#FFD700',
               textAlign: 'center',
+              letterSpacing: '0.05em'
             }}>
-              New Transaction Detected
+              New Transaction
             </div>
-          </div>
-
-          {/* Status Badge */}
-          <div style={{
-            backgroundColor: '#2A2A2A',
-            padding: '0.5rem 1rem',
-            borderRadius: '1rem',
-            alignSelf: 'center',
-            border: '1px solid #FFD700',
-            marginBottom: '1rem'
-          }}>
-            <span style={{
-              color: '#00FF00',
-              fontSize: '1.4rem',
+            
+            <div style={{
+              display: 'flex',
+              backgroundColor: '#2A2A2A',
+              padding: '0.6rem 1.5rem',
+              borderRadius: '0.8rem',
+              border: '2px solid #00FF00'
             }}>
-              ● Transaction Confirmed
-            </span>
+              <span style={{
+                color: '#00FF00',
+                fontSize: '1.6rem',
+                fontWeight: '600',
+                letterSpacing: '0.05em'
+              }}>
+                Confirmed
+              </span>
+            </div>
           </div>
 
           <div style={{ 
             display: 'flex', 
             flexDirection: 'column', 
-            gap: '1rem', 
+            gap: '1.2rem', 
             backgroundColor: '#2A2A2A', 
-            borderRadius: '1.25rem', 
-            padding: '1.5rem',
-            border: '2px solid #FFD700'
+            borderRadius: '1.2rem', 
+            padding: '2rem',
+            border: '2px solid #FFD700',
+            width: '90%',
+            alignSelf: 'center'
           }}>
             {[
-              { label: 'Time', value: formattedTime, icon: '🕒' },
-              { label: 'Network', value: networkDisplay, icon: '🌐' },
-              { label: 'Hash', value: hash, icon: '#' },
-            ].map(({ label, value, icon }) => (
+              { label: 'Time', value: formattedTime },
+              { label: 'Network', value: networkDisplay },
+              { label: 'Hash', value: hash, isHash: true }
+            ].map(({ label, value, isHash }) => (
               <div key={label} style={{ 
-                display: 'flex', 
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                gap: '1rem',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                padding: '0.8rem',
+                backgroundColor: '#1A1A1A',
+                borderRadius: '0.8rem',
+                border: '1px solid #444'
               }}>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                }}>
-                  <span style={{
-                    fontSize: '1.4rem',
-                    marginRight: '0.5rem'
-                  }}>
-                    {icon}
-                  </span>
-                  <span style={{ 
-                    color: '#FFD700', 
-                    fontSize: '1.6rem', 
-                    fontWeight: '600',
-                    minWidth: '100px'
-                  }}>
-                    {label}
-                  </span>
-                </div>
+                <span style={{ 
+                  color: '#FFD700', 
+                  fontSize: '1.4rem',
+                  fontWeight: '600',
+                  letterSpacing: '0.05em'
+                }}>{label}</span>
                 <span style={{ 
                   fontFamily: 'monospace', 
-                  fontSize: '1.4rem',
-                  backgroundColor: '#1A1A1A',
-                  padding: '0.75rem',
-                  borderRadius: '0.75rem',
-                  border: '1px solid #FFD700',
-                  flex: 1,
-                  wordBreak: label === 'Hash' ? 'break-all' : 'normal',
-                  textAlign: 'right'
-                }}>
-                  {value}
-                </span>
+                  fontSize: isHash ? '1.2rem' : '1.4rem',
+                  color: '#F5F5DC',
+                  wordBreak: isHash ? 'break-all' : 'normal',
+                  lineHeight: '1.4'
+                }}>{value}</span>
               </div>
             ))}
           </div>
 
-          {/* Footer Note */}
           <div style={{
+            display: 'flex',
+            justifyContent: 'center',
             fontSize: '1.2rem',
             color: '#888',
-            textAlign: 'center',
-            marginTop: '0.5rem'
+            backgroundColor: '#2A2A2A',
+            padding: '0.8rem',
+            borderRadius: '0.6rem',
+            width: '90%',
+            alignSelf: 'center'
           }}>
-            Click below to view detailed transaction information
+            Click below to view transaction details
           </div>
         </div>
       ),
