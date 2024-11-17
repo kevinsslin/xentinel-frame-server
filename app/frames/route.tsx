@@ -47,11 +47,15 @@ const handleRequest = frames(async (ctx) => {
     const buttons = [];
     
     if (blockscoutUrl) {
+      const formattedBlockscoutUrl = blockscoutUrl && !blockscoutUrl.startsWith('http') 
+        ? `https://${blockscoutUrl}`
+        : blockscoutUrl;
+        
       buttons.push(
         <Button 
           key="blockscout-button"
           action="link" 
-          target={blockscoutUrl}
+          target={formattedBlockscoutUrl}
         >
           View in BlockScout
         </Button>
@@ -59,11 +63,15 @@ const handleRequest = frames(async (ctx) => {
     }
 
     if (multibaasUrl) {
+      const formattedMultibaasUrl = multibaasUrl && !multibaasUrl.startsWith('http')
+        ? `https://${multibaasUrl}`
+        : multibaasUrl;
+        
       buttons.push(
         <Button 
           key="multibaas-button"
           action="link" 
-          target={multibaasUrl}
+          target={formattedMultibaasUrl}
         >
           View in MultiBaas Tx Explorer
         </Button>
